@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.io7m.primogenitor</groupId>
+    <artifactId>com.io7m.primogenitor.full</artifactId>
+    <version>8.3.1</version>
+  </parent>
+
+  <groupId>com.io7m.renderdoc_jffm</groupId>
+  <artifactId>com.io7m.renderdoc_jffm</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+
+  <packaging>pom</packaging>
+  <name>com.io7m.renderdoc_jffm</name>
+  <description>RenderDoc FFM API</description>
+  <url>https://www.io7m.com/software/renderdoc_jffm</url>
+
+  <modules>
+    <module>com.io7m.renderdoc_jffm.core</module>
+    <module>com.io7m.renderdoc_jffm.tests</module>
+  </modules>
+
+  <properties>
+    <!-- Configuration. -->
+    <io7m.api.previousVersion>1.0.0-SNAPSHOT</io7m.api.previousVersion>
+    <io7m.java.targetJavaVersion>22</io7m.java.targetJavaVersion>
+
+    <!-- io7m dependencies. -->
+    <com.io7m.jmulticlose.version>1.1.3</com.io7m.jmulticlose.version>
+
+    <!-- Third-party dependencies. -->
+    <ch.qos.logback-classic.version>1.5.12</ch.qos.logback-classic.version>
+    <org.apache.commons.lang3.version>3.17.0</org.apache.commons.lang3.version>
+    <org.junit.version>5.11.3</org.junit.version>
+    <org.slf4j.version>2.0.16</org.slf4j.version>
+  </properties>
+
+  <licenses>
+    <license>
+      <name>ISC</name>
+      <url>https://www.io7m.com/license/isc.txt</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <url>https://www.github.com/io7m-com/renderdoc_jffm</url>
+    <connection>scm:git:https://github.com/io7m-com/renderdoc_jffm</connection>
+    <developerConnection>scm:git:https://github.com/io7m-com/renderdoc_jffm</developerConnection>
+  </scm>
+
+  <developers>
+    <developer>
+      <id>io7m</id>
+      <name>Mark Raynsford</name>
+      <email>code@io7m.com</email>
+      <url>https://www.io7m.com</url>
+    </developer>
+  </developers>
+
+  <issueManagement>
+    <url>https://www.github.com/io7m-com/renderdoc_jffm/issues</url>
+    <system>GitHub Issues</system>
+  </issueManagement>
+
+  <distributionManagement>
+    <site>
+      <id>io7m.com</id>
+      <name>io7m.com</name>
+      <url>https://www.io7m.com/software/renderdoc_jffm</url>
+    </site>
+    <repository>
+      <id>sonatype-nexus-staging</id>
+      <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+    <snapshotRepository>
+      <id>sonatype-nexus-snapshots</id>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <ciManagement>
+    <system>GitHub Actions</system>
+    <url>https://github.com/renderdoc_jffm/actions</url>
+  </ciManagement>
+
+  <prerequisites>
+    <maven>3.0.4</maven>
+  </prerequisites>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.io7m.jmulticlose</groupId>
+        <artifactId>com.io7m.jmulticlose.core</artifactId>
+        <version>${com.io7m.jmulticlose.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${org.slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>${ch.qos.logback-classic.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${org.junit.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <configuration>
+            <suppressionsLocation>checkstyle-filter.xml</suppressionsLocation>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <!-- Generate a site -->
+      <plugin>
+        <groupId>com.io7m.minisite</groupId>
+        <artifactId>com.io7m.minisite.maven_plugin</artifactId>
+        <inherited>false</inherited>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

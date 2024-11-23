@@ -1,0 +1,38 @@
+
+## renderdoc_jffm
+
+A Java interface to the [RenderDoc API](https://renderdoc.org).
+
+## Features
+
+* A friendly Java interface to the RenderDoc API.
+* [JPMS](https://en.wikipedia.org/wiki/Java_Platform_Module_System)-ready.
+* ISC license.
+
+## Usage
+
+When running your application, you must allow access to the
+[FFM](https://openjdk.org/jeps/454) API for the module
+`com.io7m.renderdoc_jffm.core`:
+
+```
+$ java --enable-native-access=com.io7m.renderdoc_jffm.core ...
+```
+
+Run your application from RenderDoc. RenderDoc works by injecting a native
+library into your application. Then, inside your application, call
+`RenderDoc.open()`:
+
+```
+try (final var doc = RenderDoc.open()) {
+  ...
+}
+```
+
+The obtained `RenderDocType` interface is a type-safe, memory-safe interface
+to the API exposed by the RenderDoc native library. The interface allows for
+setting options and triggering captures.
+
+The `open()` method will raise an `IOException` with a useful error message
+if the `renderdoc` native library is not present in the current application
+process.

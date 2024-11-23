@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.io7m.renderdoc_jffm</groupId>
+    <artifactId>com.io7m.renderdoc_jffm</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>com.io7m.renderdoc_jffm.core</artifactId>
+
+  <name>com.io7m.renderdoc_jffm.core</name>
+  <description>RenderDoc FFM API (Core).</description>
+  <url>https://www.io7m.com/software/renderdoc_jffm/</url>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.io7m.jmulticlose</groupId>
+      <artifactId>com.io7m.jmulticlose.core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>
